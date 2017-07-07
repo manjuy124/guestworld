@@ -2,8 +2,10 @@
   "name": "gwv1.0",
   "version": "0.0.0",
   "private": true,
+  "main":"index.js",
   "scripts": {
-    "start": "node ./bin/www"
+    "test":"echo \"Error: No test specified\" && exit:1",
+    "start": "node ./index"//./bin/www
   },
   "dependencies": {
     "async": "^2.1.5",
@@ -14,6 +16,8 @@
     "jade": "~1.11.0",
     "morgan": "~1.7.0",
     "serve-favicon": "~2.3.0"
-  }
-    
+  },
+  "engines":{
+    "node":"6.11.0" 
+  }    
 }
