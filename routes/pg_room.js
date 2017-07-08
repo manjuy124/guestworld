@@ -39,7 +39,7 @@ var getAllRoomDetails = router.route('/all');
 getAllRoomDetails.post(function(req,res){
     
     pgRooms.find({pg_id:req.body.pg_id},function(err,response){
-        
+                    
         if (err)
             throw err;
         res.json({"rooms":response});
@@ -70,29 +70,6 @@ addRoom.post(function(req,res,next) {
     });
 });
 
-////Delete room from PG
-//var deleteRoom = router.route('/deleteRoom');
-//deleteRoom.post(function(req,res,next) {
-//    pgRooms.find({pg_id:req.body.pg_id,room_name:req.body.room_name,sharing:req.body.sharing},function(err,response){
-//       if(err) {
-//           throw err;
-//       } 
-//        if(response.length > 0) {
-//            pgRoomDetails.remove({pg_id:req.body.pg_id,room_name:req.body.room_name},function(err,res){
-//            });
-//            pgRooms.remove({pg_id:req.body.pg_id,room_name:req.body.room_name,sharing:req.body.sharing}, function(err,removed) {
-//                if(err){
-//                    throw err;
-//            }
-//                return res.send('Room is deleted!');
-//            });
-//        }
-//            else {
-//                return res.send('Sorry! There is no room with that name!')
-//            }
-//    });
-//    
-//});
 //Return Room Sharing of given PG_Id
 var getSharingRoute = router.route('/getSharing');
 getSharingRoute.post(function(req,res,next) {

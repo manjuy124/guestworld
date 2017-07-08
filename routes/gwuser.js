@@ -156,7 +156,7 @@ forgot_pwd.post(function(req,res,next){
 });
 
 //Get Particular User Details
-var getUserRoute = router.route('/getUserDetails');
+var getUserRoute =   router.route('/getUserDetails');
 getUserRoute.post(function(req,res,next){
    gwuser.find({user_id:req.body.user_id},function(err,response){
        if(err){
