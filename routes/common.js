@@ -11,7 +11,7 @@ var Common = {
 	
 	Schema:require('mongoose').Schema,
 	
-	conn:require('mongoose').createConnection(process.env.MONGOLAB_URI),//mongodb://127.0.0.1/GWv1_DB
+	conn:require('mongoose').createConnection(process.env.MONGOLAB_URI),//mongodb://127.0.0.1/GWv1_DB process.env.MONGOLAB_URI
 	
 	// check if the user is authenticated and can access resources 
 	ensureAuthenticated : function ensureAuthenticated(req, res, next) {
