@@ -1,7 +1,7 @@
 // Node Module dependencies
 var express = require('express');
 var router = express.Router();
-var fs = require('fs');
+//var fs = require('fs');
 var nodemailer = require('nodemailer');
 var bodyparser = require('body-parser');
 var jsonparser = bodyparser.json({type: 'application/json'})
