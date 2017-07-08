@@ -1,5 +1,3 @@
-
-
 var Common = {
 	
 	// Node Module dependencies	
