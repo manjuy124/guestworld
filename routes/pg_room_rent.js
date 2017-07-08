@@ -9,7 +9,7 @@ var common = require('./common.js');
 var gwuserjs = require('./gwuser.js');
 var pgjs = require('./pg.js');
 //var userRequest = require('request');
-//var series = require('async-series');
+
 
 //for auto incremanting primary key
 //common.autoIncrement.initialize(common.conn);
