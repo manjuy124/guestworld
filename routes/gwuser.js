@@ -1,7 +1,6 @@
 // Node Module dependencies
 var express = require('express');
 var router = express.Router();
-//var fs = require('fs');
 var multer = require('multer');
 var nodemailer = require('nodemailer');
 
@@ -182,26 +181,7 @@ getUserRoute.post(function(req,res,next){
 //==============================================================================================================
 //=================================Uploading Image==============================================================
 //==============================================================================================================
-//path and originalname are the fields stored in mongoDB
-var customerimageSchema = common.Schema({
- path: {
- type: String,
- required: true,
- trim: true
- },
- originalname: {
- type: String,
- required: true
- },
- user_id :{
-     type: String,
-     require: true
- }
-});
 
-var Image = common.conn.model('CustomerImages', customerimageSchema);
-
-// To get more info about 'multer'.. you can go through https://www.npmjs.com/package/multer..
 var storage = multer.diskStorage({
  destination: function(req, file, cb) {
  cb(null, 'customer_profile_images/');
@@ -223,28 +203,25 @@ router.post('/uploadProfileImage',upload.any(),function(req,res,next){
 });
 
 //========================================Uploading Image=====================================================
-router.post('/uploadImage', upload.any(), function(req, res, next) {
+router.post('/uploadImage', upload.single('photo'), function(req, res, next) {
  
   //res.send(req.files);
 /*req.files has the information regarding the file you are uploading...
 from the total information, i am just using the path and the imageName to store in the mongo collection(table)
 */
  var user_id = req.body.user_id;
-    console.log(req.body.user_id);
-    console.log(req.files);
- var path = req.files[0].path;
- var imageName = req.files[0].originalname;
+ var path = req.file.path;
+ var imageName = req.file.originalname;
  
  var imagepath = {};
  imagepath['profile_image'] = path;
  imagepath['originalname'] = imageName;
  imagepath['user_id'] = user_id;
     
-    console.log(path);
  //imagepath contains three objects, path and the imageName, user_id
  
     // Check already image is set for user
-    Image.find({user_id:req.body.user_id},function(err,response){
+    gwuser.find({user_id:req.body.user_id},function(err,response){
        if(err){
            return res.send(err);
        } 
@@ -258,17 +235,10 @@ from the total information, i am just using the path and the imageName to store 
         }
         else
             {
-                //we are passing two objects in the addImage method.. which is defined above..
-                router.addImage(imagepath, function(err) {
-                });
-                return res.send('Added!');
+                return res.send('Cannot set!');
             }
     });
 });
-
-router.addImage = function(image, callback) {
- gwuser.create(image, callback);
-}
 
 //=======================================Get Image============================================================
 router.post('/getProfileImage',function(req,res,next){
