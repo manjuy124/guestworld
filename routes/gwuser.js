@@ -69,6 +69,8 @@ gwuserroute.post(function(req,res){
             if(err){
                 return res.send(err);
             }
+            res.header("Access-Control-Allow-Origin","*");
+            res.header("Access-Control-Allow-Headers","Origin, X-Requested-With, Content-Type, Accept");
             return res.json({"user":response});//response.user_id.toString()
             
             });
