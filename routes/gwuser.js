@@ -77,7 +77,7 @@ gwuserroute.post(function(req,res){
         }
     });
 });
-
+ 
 //get particular user details
 var getUserDetails = router.route('/getUser');
 getUserDetails.post(function(req,res,next){ 
@@ -107,7 +107,8 @@ login.post(function(req,res){
         
         if (err)
             throw err
-            
+        res.header("Access-Control-Allow-Origin","*");
+        res.header("Access-Control-Allow-Headers","Origin, X-Requested-With, Content-Type, Accept");    
             if(response.length > 0) {
                 res.json({"user":response[0]}); 
             }else {
