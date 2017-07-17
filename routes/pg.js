@@ -24,12 +24,12 @@ var pgSchema = common.Schema({
     lattitude: Number, 
     pg_profile_image: {
         type: String,
-        required: true,
+//        required: true,
         trim: true
     },
     originalname: {
         type: String,
-        required: true
+//        required: true
     }
 });
 
@@ -40,7 +40,7 @@ var pgSchema = common.Schema({
 //    startAt: 1000,
 //    incrementBy: 1
 //});
-
+        
 //composite key
 pgSchema.index({pg_id: 1,user_id: 1, pg_name: 1},{ unique: true});
 
